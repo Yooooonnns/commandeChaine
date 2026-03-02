@@ -1,0 +1,64 @@
+<Window x:Class="Yazaki.CommandeChaine.Launcher.SplashWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="False"
+        Topmost="True"
+        Width="560"
+        Height="340">
+    <Border CornerRadius="18" Background="White" Padding="22" BorderBrush="#11000000" BorderThickness="1">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="22" ShadowDepth="6" Opacity="0.25" Color="#000000" />
+        </Border.Effect>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                  <Image Source="pack://application:,,,/Yazaki.CommandeChaine.Launcher;component/Assets/splashartImage.png"
+                      Stretch="Uniform"
+                      RenderOptions.BitmapScalingMode="HighQuality"
+                      MaxHeight="170"
+                      Margin="6,6,6,0" />
+            </Grid>
+
+            <TextBlock Grid.Row="1" x:Name="StatusText"
+                       Text="Démarrage…"
+                       Margin="6,14,6,10"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Foreground="#111827" />
+
+            <Grid Grid.Row="2" Margin="6,0,6,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <ProgressBar Grid.Row="0"
+                             Height="6"
+                             IsIndeterminate="True"
+                             Background="#FFE5E7EB"
+                             Foreground="#E11D48" />
+
+                <TextBlock Grid.Row="1"
+                           Text="Commande Chaîne"
+                           Margin="0,10,0,0"
+                           Opacity="0.55"
+                           HorizontalAlignment="Right"
+                           Foreground="#111827" />
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

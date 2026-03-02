@@ -1,0 +1,17 @@
+<Page x:Class="Yazaki.CommandeChaine.Desktop.Views.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="Réglages">
+    <Grid Margin="18">
+        <StackPanel>
+            <TextBlock Text="Réglages" FontSize="22" FontWeight="SemiBold" Margin="0,0,0,14" />
+            <materialDesign:Card Padding="14" UniformCornerRadius="12" Background="White">
+                <StackPanel>
+                    <TextBlock Text="MVP" FontWeight="SemiBold" Margin="0,0,0,6" />
+                    <TextBlock Text="Les règles de vitesse et catégories seront exposées via API (CRUD) au prochain sprint." Opacity="0.85" TextWrapping="Wrap" />
+                </StackPanel>
+            </materialDesign:Card>
+        </StackPanel>
+    </Grid>
+</Page>

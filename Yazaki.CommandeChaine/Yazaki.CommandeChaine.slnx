@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Yazaki.CommandeChaine.Api/Yazaki.CommandeChaine.Api.csproj" />
+    <Project Path="src/Yazaki.CommandeChaine.Application/Yazaki.CommandeChaine.Application.csproj" />
+    <Project Path="src/Yazaki.CommandeChaine.Core/Yazaki.CommandeChaine.Core.csproj" />
+    <Project Path="src/Yazaki.CommandeChaine.Desktop/Yazaki.CommandeChaine.Desktop.csproj" />
+    <Project Path="src/Yazaki.CommandeChaine.GatewaySimulator/Yazaki.CommandeChaine.GatewaySimulator.csproj" />
+    <Project Path="src/Yazaki.CommandeChaine.Infrastructure/Yazaki.CommandeChaine.Infrastructure.csproj" />
+    <Project Path="src/Yazaki.CommandeChaine.Launcher/Yazaki.CommandeChaine.Launcher.csproj" />
+  </Folder>
+</Solution>

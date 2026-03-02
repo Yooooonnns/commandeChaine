@@ -1,0 +1,106 @@
+﻿<Window x:Class="Yazaki.CommandeChaine.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Yazaki.CommandeChaine.Desktop"
+        mc:Ignorable="d"
+        Title="Yazaki - Commande Chaîne" Height="760" Width="1240" WindowStartupLocation="CenterScreen"
+        TextElement.FontSize="14" Background="#FFF5F5F5">
+    <materialDesign:DrawerHost x:Name="RootDrawer" IsLeftDrawerOpen="True">
+        <materialDesign:DrawerHost.LeftDrawerContent>
+            <materialDesign:ColorZone Mode="PrimaryDark" Padding="18">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+                        <materialDesign:PackIcon Kind="Factory" Width="22" Height="22" Margin="0,1,10,0" />
+                        <TextBlock Text="Commande Chaîne" FontSize="18" FontWeight="SemiBold" />
+                    </StackPanel>
+
+                    <TextBlock Grid.Row="1" x:Name="ApiStatusText" Opacity="0.85" Margin="0,0,0,14" />
+
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text="NAVIGATION" FontSize="12" FontWeight="SemiBold" Opacity="0.7" Margin="0,0,0,8" />
+
+                        <ListBox x:Name="MenuList" SelectionChanged="MenuList_OnSelectionChanged"
+                                 BorderThickness="0" Background="Transparent">
+                            <ListBoxItem Tag="chains">
+                                <DockPanel LastChildFill="True">
+                                    <materialDesign:PackIcon Kind="LinkVariant" Width="20" Height="20" Margin="0,0,12,0" />
+                                    <TextBlock Text="Chaînes" VerticalAlignment="Center" />
+                                </DockPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Tag="fo">
+                                <DockPanel LastChildFill="True">
+                                    <materialDesign:PackIcon Kind="FileDocument" Width="20" Height="20" Margin="0,0,12,0" />
+                                    <TextBlock Text="FO" VerticalAlignment="Center" />
+                                </DockPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Tag="dashboard">
+                                <DockPanel LastChildFill="True">
+                                    <materialDesign:PackIcon Kind="ChartLine" Width="20" Height="20" Margin="0,0,12,0" />
+                                    <TextBlock Text="Dashboard" VerticalAlignment="Center" />
+                                </DockPanel>
+                            </ListBoxItem>
+                        </ListBox>
+
+                        <Separator Margin="0,16,0,12" Opacity="0.35" />
+                        <TextBlock Text="OUTILS" FontSize="12" FontWeight="SemiBold" Opacity="0.7" Margin="0,0,0,8" />
+                        <TextBlock Text="Board/JIG matching is handled by Digitalisation Boards." Opacity="0.8" TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <TextBlock Grid.Row="3" Text="Yazaki" Opacity="0.65" HorizontalAlignment="Right" />
+                </Grid>
+            </materialDesign:ColorZone>
+        </materialDesign:DrawerHost.LeftDrawerContent>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <materialDesign:ColorZone Grid.Row="0" Mode="PrimaryMid" Padding="10,10,10,10">
+                <DockPanel LastChildFill="False">
+                    <ToggleButton DockPanel.Dock="Left" IsChecked="{Binding ElementName=RootDrawer, Path=IsLeftDrawerOpen}" Width="44" Height="36"
+                                  ToolTip="Menu" Margin="0,0,10,0">
+                        <materialDesign:PackIcon Kind="Menu" Width="22" Height="22" />
+                    </ToggleButton>
+
+                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
+                        <Grid x:Name="RaspberryPiStatusGrid" Margin="0,0,10,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Ellipse x:Name="RaspberryPiStatusIndicator" Grid.Column="0" Width="12" Height="12" Margin="0,2,8,0" Fill="#90EE90" />
+
+                            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0,0,0,0">
+                                <TextBlock x:Name="RaspberryPiStatusText" FontSize="12" FontWeight="SemiBold" Text="Pi: Connected" />
+                                <TextBlock x:Name="RaspberryPiVoltageText" FontSize="10" Opacity="0.8" Text="Voltage: N/A" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+
+                    <TextBlock Text="" />
+                </DockPanel>
+            </materialDesign:ColorZone>
+
+            <Grid Grid.Row="1" Margin="14">
+                <materialDesign:Card Padding="0" UniformCornerRadius="16" Background="White">
+                    <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Background="Transparent" />
+                </materialDesign:Card>
+            </Grid>
+        </Grid>
+    </materialDesign:DrawerHost>
+</Window>

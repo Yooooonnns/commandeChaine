@@ -1,0 +1,82 @@
+<Window x:Class="Yazaki.CommandeChaine.Desktop.Views.DashboardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Dashboard" Height="680" Width="1100" WindowStartupLocation="CenterOwner"
+        TextElement.FontSize="14" Background="#FFF5F5F5">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <materialDesign:Card Padding="14" UniformCornerRadius="12" Background="White" Margin="0,0,0,12">
+            <StackPanel>
+                <TextBlock Text="Dashboard" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,10" />
+                <WrapPanel>
+                    <StackPanel Margin="0,0,16,0">
+                        <TextBlock Text="Du" Opacity="0.7" />
+                        <DatePicker x:Name="FromDate" Width="160" />
+                    </StackPanel>
+
+                    <StackPanel Margin="0,0,16,0">
+                        <TextBlock Text="Au" Opacity="0.7" />
+                        <DatePicker x:Name="ToDate" Width="160" />
+                    </StackPanel>
+
+                    <StackPanel Margin="0,0,16,0">
+                        <TextBlock Text="Ligne" Opacity="0.7" />
+                        <ComboBox x:Name="LineSelect" Width="220" DisplayMemberPath="Name" SelectionChanged="LineSelect_OnSelectionChanged" />
+                    </StackPanel>
+
+                    <StackPanel Margin="0,0,16,0">
+                        <TextBlock Text="Poste" Opacity="0.7" />
+                        <ComboBox x:Name="PostSelect" Width="160" DisplayMemberPath="Name" />
+                    </StackPanel>
+
+                    <StackPanel Margin="0,0,16,0">
+                        <TextBlock Text="Cause" Opacity="0.7" />
+                        <ComboBox x:Name="CauseSelect" Width="140" />
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBlock Text=" " />
+                        <Button Content="Actualiser" Click="Refresh_OnClick" Padding="12,6" />
+                    </StackPanel>
+                </WrapPanel>
+            </StackPanel>
+        </materialDesign:Card>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:Card Grid.Column="0" Padding="14" UniformCornerRadius="12" Background="White" Margin="0,0,12,0">
+                <StackPanel>
+                    <TextBlock Text="Evolution des retards" FontWeight="SemiBold" Margin="0,0,0,8" />
+                    <Canvas x:Name="DelayChart" Height="260" Background="#FFF9F4" />
+                    <TextBlock x:Name="DelayLegend" Opacity="0.7" Margin="0,8,0,0" />
+                </StackPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card Grid.Column="1" Padding="14" UniformCornerRadius="12" Background="White">
+                <StackPanel>
+                    <TextBlock Text="Analyse des arrets" FontWeight="SemiBold" Margin="0,0,0,8" />
+                    <Canvas x:Name="StopsChart" Height="260" Background="#FFF9F4" />
+                    <TextBlock x:Name="StopsLegend" Opacity="0.7" Margin="0,8,0,0" />
+                </StackPanel>
+            </materialDesign:Card>
+        </Grid>
+
+        <materialDesign:Card Grid.Row="2" Padding="14" UniformCornerRadius="12" Background="White" Margin="0,12,0,0">
+            <StackPanel>
+                <TextBlock Text="Evolution du credit temps" FontWeight="SemiBold" Margin="0,0,0,8" />
+                <Canvas x:Name="CreditChart" Height="220" Background="#F5F9F2" />
+                <TextBlock x:Name="CreditLegend" Opacity="0.7" Margin="0,8,0,0" />
+            </StackPanel>
+        </materialDesign:Card>
+    </Grid>
+</Window>

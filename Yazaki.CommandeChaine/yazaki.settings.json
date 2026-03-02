@@ -1,0 +1,10 @@
+{
+  "ApiBaseUrl": "http://localhost:5016",
+  "HealthPath": "/health",
+  "ApiDllName": "Yazaki.CommandeChaine.Api.dll",
+  "DesktopExeName": "Yazaki.CommandeChaine.Desktop.exe",
+  "StartupTimeoutSeconds": 30,
+  "RaspberryPiApiUrl": "http://localhost:8000",
+  "RaspberryPiHealthPath": "/api/v1/health",
+  "RaspberryPiAutoStart": true
+}

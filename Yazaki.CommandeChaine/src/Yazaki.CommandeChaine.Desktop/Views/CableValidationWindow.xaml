@@ -1,0 +1,95 @@
+<Window x:Class="Yazaki.CommandeChaine.Desktop.Views.CableValidationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Validation des câbles" Height="600" Width="500" WindowStartupLocation="CenterOwner"
+        TextElement.FontSize="14" Background="#FFF5F5F5">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <materialDesign:Card Grid.Row="0" Padding="14" UniformCornerRadius="12" Background="White" Margin="0,0,0,12">
+            <StackPanel>
+                <TextBlock x:Name="BoardNameText" FontSize="18" FontWeight="SemiBold" />
+                <TextBlock Text="Cliquez sur un câble pour le valider" Opacity="0.7" Margin="0,6,0,0" />
+            </StackPanel>
+        </materialDesign:Card>
+
+        <!-- Current Cable Status -->
+        <materialDesign:Card Grid.Row="1" Padding="14" UniformCornerRadius="12" Background="White" Margin="0,0,0,12">
+            <StackPanel>
+                <TextBlock Text="Câble en cours" FontWeight="SemiBold" Margin="0,0,0,6" />
+                <TextBlock x:Name="CurrentCableText" FontSize="16" Foreground="#2196F3" />
+                <TextBlock x:Name="CableStatusText" Opacity="0.7" Margin="0,4,0,0" />
+                <Button x:Name="ConfirmCableButton" Content="Valider (Entrer)" Click="ConfirmCable_OnClick" Padding="12,8" Margin="0,8,0,0" />
+            </StackPanel>
+        </materialDesign:Card>
+
+        <!-- Pending Cables List -->
+        <materialDesign:Card Grid.Row="2" Padding="0" UniformCornerRadius="12" Background="White" Margin="0,0,0,12">
+            <StackPanel>
+                <TextBlock Text="Câbles en attente" FontWeight="SemiBold" Padding="14,14,14,8" />
+                <ListBox x:Name="CablesListBox" 
+                         BorderThickness="0" 
+                         Background="Transparent"
+                         Padding="0"
+                         SelectionChanged="Cable_OnSelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="14,10" BorderThickness="0,0,0,1" BorderBrush="#EFEFEF">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" Orientation="Vertical">
+                                        <TextBlock FontWeight="SemiBold" FontSize="15">
+                                            <Run Text="Câble: " /><Run Text="{Binding Reference}" />
+                                        </TextBlock>
+                                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                            <TextBlock Text="Temps: " Opacity="0.7" />
+                                            <TextBlock Text="{Binding ProductionTimeMinutes}" />
+                                            <TextBlock Text=" min" Opacity="0.7" />
+                                            
+                                            <TextBlock Margin="12,0,0,0" Opacity="0.7">
+                                                <Run Text="Ordre: " /><Run Text="{Binding OrderIndex}" />
+                                            </TextBlock>
+                                        </StackPanel>
+                                        
+                                        <!-- Priority indicators -->
+                                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                            <Border x:Name="UrgentBorder" Visibility="Collapsed" Background="#FF5252" CornerRadius="2" Padding="4,2">
+                                                <TextBlock Text="URGENT" FontSize="10" Foreground="White" FontWeight="SemiBold" />
+                                            </Border>
+                                            <Border x:Name="LateBorder" Visibility="Collapsed" Background="#FFA726" CornerRadius="2" Padding="4,2" Margin="8,0,0,0">
+                                                <TextBlock Text="EN RETARD" FontSize="10" Foreground="White" FontWeight="SemiBold" />
+                                            </Border>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <!-- Status badge -->
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <Border x:Name="StatusBadge" CornerRadius="12" Padding="10,4" Margin="0,0,0,0">
+                                            <TextBlock x:Name="StatusText" FontSize="12" FontWeight="SemiBold" />
+                                        </Border>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </materialDesign:Card>
+
+        <!-- Footer -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Fermer" Click="Close_OnClick" Padding="12,8" Margin="0,0,8,0" />
+        </StackPanel>
+    </Grid>
+</Window>
